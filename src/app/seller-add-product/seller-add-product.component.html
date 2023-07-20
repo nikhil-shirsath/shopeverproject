@@ -1,0 +1,158 @@
+
+
+
+<div class="row">
+  <div class="col-6">
+    <div class="add-product">
+      <h1 class="heading">Add New Product</h1>
+      <p class="message-p">{{addProductMessage}}</p>
+
+      <form
+     
+      #addProduct="ngForm"
+      (ngSubmit)="submit(addProduct.value)"
+       class="common-form">
+       <label for="product_name" class="form-label">Name</label>
+        
+       <input
+          required
+          minlength="3"
+          maxlength="50"
+          type="text"
+          class="form-input form-control"
+          placeholder="Enter Product Name"
+          name="name"
+          #name ="ngModel"
+          ngModel
+        />
+        <p class="invalid-input" *ngIf="name.touched && name.invalid">
+          Enter  Product Name.
+          <span *ngIf="name.errors?.['minlength']">Enter Min 3 charecters in Product Name.</span>
+          <span *ngIf="name.errors?.['maxlength']">Product Name Should Not more then 30 charecters.</span>
+        </p>
+    
+       <label for="product_price" class="form-label">Price</label>
+    
+      <input
+        required
+        min="1"
+        max="10000"
+        type="text"
+        class="form-input form-control"
+        placeholder="Enter Product Price"
+        name="price"
+        ngModel
+        #price="ngModel"
+      />
+      <p class="invalid-input" *ngIf="price.touched && price.invalid">
+        Enter  Product Price.
+        <span *ngIf="price.errors?.['minlength']">Enter Minimum 1digit  in Product Price.</span>
+        <span *ngIf="price.errors?.['maxlength']">Product price Should Not more then 10000 digits.</span>
+      </p>
+      
+
+      <label for="product_category" 
+      class="form-label">
+      Category
+      </label>
+      <input
+      required
+      minlength="10"
+      maxlength="60"
+      type="text"
+      class="form-input form-control"
+      placeholder="Enter Product Category"
+      name="category"
+      ngModel
+      #category="ngModel"
+    />
+
+    <p class="invalid-input" *ngIf="category.touched && category.invalid">
+      Enter  Product category.
+      <span *ngIf="category.errors?.['minlength']">Enter Minimum 1digit  in Product category.</span>
+      <span *ngIf="category.errors?.['maxlength']">Product category Should Not more then 10000 digits.</span>
+    </p>
+
+    
+    <label for="product_description" class="form-label">Color</label>
+    <input
+    required
+    minlength="3"
+    maxlength="20"
+    type="text"
+    class="form-input form-control"
+    placeholder="Enter Product Color"
+    name="color"
+    ngModel
+    #color="ngModel"
+    />
+
+    <p class="invalid-input" *ngIf="color.touched && color.invalid">
+      Enter  Product color.
+      <span *ngIf="color.errors?.['minlength']">Enter Minimum 1digit  in Product Price.</span>
+      <span *ngIf="color.errors?.['maxlength']">Product color Should Not more then 10000 digits.</span>
+    </p>
+
+    <label for="product_description" class="form-label">Description</label>
+    
+    
+    <textarea
+    required
+    minlength="3"
+    maxlength="100"
+    type="text"
+    class="form-input form-control"
+    placeholder="Enter Product Description"
+    name="description"
+    ngModel
+    
+    #description="ngModel"
+    ></textarea>
+    
+    <p class="invalid-input" *ngIf="category.touched && category.invalid">
+      Enter Product Description.
+      <span *ngIf="category.errors?.['minlength']">Enter Minimum 1digit  in Product Price.</span>
+      <span *ngIf="category.errors?.['maxlength']">Product category Should Not more then 10000 digits.</span>
+    </p>
+
+
+    <label for="product_imageUrl" class="form-label">Image Url</label>
+    <input
+    required
+    minlength="20"
+  
+    type="text"
+    class="form-input form-control"
+    placeholder="Enter Product Image URL"
+    name="image"
+    ngModel
+    #image="ngModel"
+    />
+    <p class="invalid-input" *ngIf="image.touched && image.invalid">
+      Enter  Product Image URL.
+    </p>
+
+    <button class="form-button btn btn-primary" 
+    [disabled]="!addProduct.valid && addProduct.pristine">Add Product</button>
+    
+    </form>
+    </div>
+  </div>
+  <div class="col">
+   
+
+    <div class="card" *ngIf="name.value" style="width: 75%;">
+      <h1 class="heading"> {{name.value}}</h1>
+      <img [src]="image.value"class="card-img-top" alt="{{name.value}}">
+      <div class="card-body">
+        <h5 class="card-title">{{name.value}}</h5>
+        
+        <p class="card-text">{{description.value}}</p>
+        <div class="row card-bottem">
+          <div class="col-6"><p class="card-text"> {{price.value |currency:'INR'}}</p></div>
+          <div class="col-6"><p class="card-text"> {{category.value}}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

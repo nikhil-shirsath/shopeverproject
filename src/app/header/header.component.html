@@ -1,0 +1,121 @@
+
+<nav class="nav navbar navbar-expand-lg bg-light">
+
+
+<div class="container-fluid">
+  <h1><a routerLink="">ShopEver</a> </h1>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+
+
+    
+  <div *ngIf="menuType!=='seller'" class= "  nav-search">
+    <input type="text"
+    #searchInput
+    (keyup)="searchProduct($event)" 
+    (blur)="hideSearch()" 
+    placeholder="Search Products" />
+
+    <button class="btn btn-primary" 
+    (click)="submitSearch(searchInput.value)">
+    Search
+    </button>
+
+    <ul class="suggested-search" 
+    *ngIf="searchResult">
+      <li *ngFor="let item of searchResult">
+        <a (mousedown)="redirectToDetails(item.id)" >
+          {{item.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+ <div [ngSwitch]="menuType" class="allLinks ">
+
+
+
+  <ul *ngSwitchCase="'default'" class="navbar-nav me-auto mb-2 mb-lg-0" >
+    <li ><a  routerLink="show-Products">ShowAllProducts</a></li>
+    <li ><a  routerLink="seller-auth">Admin</a></li>
+    <li ><a  routerLink="user-auth">User</a></li>
+    <li ><a  href="#">Cart({{cartItems}})</a></li>
+
+ 
+
+  </ul>
+  
+  <ul *ngSwitchCase="'user'" class="navbar-nav me-auto mb-2 mb-lg-0" >
+    <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
+    <li><a routerLink="/">{{userName | titlecase}}</a></li>
+
+    <li><a routerLink="show-Products">ShowAllProducts</a></li>
+
+    <li><a routerLink="my-orders" >My Orders</a></li>
+
+    <li><a [routerLink]="cartItems>0?'cart-page':null">
+      Cart({{cartItems}})
+    </a></li>
+
+    <button type="button" class="btn btn-primary position-relative">
+      Bonus
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{0}}
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </button>
+
+
+    <button class="btn btn-danger">
+      <a (click)="userLogout()" >Logout</a>
+    </button>
+  </ul>
+
+  
+    <ul *ngSwitchCase="'seller'"class="example-spacer navbar-nav me-auto mb-2 mb-lg-0" >
+      <span > </span>
+      
+      <li><a href="/">{{sellerName | titlecase}}</a></li>
+      <li><a routerLink="show-Products">ShowAllProducts</a></li>
+  
+      <li>
+        <a routerLink="seller-add-product">
+          Add Product
+        </a>
+      </li>
+      <li>
+        <a routerLink="seller-home">
+          Listof  Products
+        </a>
+      </li>
+  
+      <li>
+        <button class="btn btn-danger" 
+        (click)="logout()">
+          Logout
+        </button>
+      </li>
+    
+  
+    </ul>
+  
+ 
+  
+ </div>
+
+
+
+  </div>
+
+
+
+
+
+</div>
+</nav>
+
+

@@ -1,0 +1,28 @@
+
+
+<div class="product-list-wrapper">
+    <h1>AllProducts</h1>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of showAllProducts">
+        <div class="product-item">
+          <img src="{{item.image}}" alt="{{item.name}}" width="100%">
+        <div class="product-details">
+          <h6 class="name-head">{{item.name}}</h6>
+          <div class="product-price">
+            <h6>Price:{{item.price |currency:'INR'}}</h6>
+          </div>
+          <div class="product-color">
+            <h6>Color:{{item.color}}</h6>
+          </div>
+        </div>
+        <div class="product-footer">
+          <a routerLink="/details/{{item.id}}">View Details</a>
+          <a href="">Add to Cart</a>
+    
+        </div>
+        </div>
+      </div>
+    
+    
+    </div>
+</div>

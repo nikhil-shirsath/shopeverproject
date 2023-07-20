@@ -1,0 +1,66 @@
+.product-details{
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+.product-details .product-img{
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+.product-color{
+    border: 3px solid #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.quantity-group{
+    margin-top: 20px;
+}
+
+.quantity-group button{
+    padding: 10px;
+
+ 
+    background: #d934a5;
+    background-image: -webkit-linear-gradient(top, #d934a5, #2980b9);
+    background-image: -moz-linear-gradient(top, #d934a5, #2980b9);
+    background-image: -ms-linear-gradient(top, #d934a5, #2980b9);
+    background-image: -o-linear-gradient(top, #d934a5, #2980b9);
+    background-image: linear-gradient(to bottom, #d934a5, #2980b9);
+    -webkit-border-radius: 30;
+    -moz-border-radius: 30;
+    border-radius: 30px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 27px;
+    padding: 0px 10px 0px 7px;
+    text-decoration: none;
+ 
+}
+
+.quantity-group button:hover{
+    background: #3c4cfc;
+    background-image: -webkit-linear-gradient(top, #3c4cfc, #3498db);
+    background-image: -moz-linear-gradient(top, #3c4cfc, #3498db);
+    background-image: -ms-linear-gradient(top, #3c4cfc, #3498db);
+    background-image: -o-linear-gradient(top, #3c4cfc, #3498db);
+    background-image: linear-gradient(to bottom, #3c4cfc, #3498db);
+    text-decoration: none;
+
+
+}
+
+
+.quantity-group span p{
+    padding: 10px;
+    width: 50px;
+    border: none;
+    text-align: center;
+    font-size: 2rem;
+    display: inline;
+}
+
+.btn{
+    color: antiquewhite;
+}
+

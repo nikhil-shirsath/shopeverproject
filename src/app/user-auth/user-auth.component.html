@@ -1,0 +1,139 @@
+<div class="user-auth">
+ <div *ngIf="!showLogin"  class="sign-up">
+  <h1>User Signup</h1>
+  <form #userSignUp="ngForm" class="common-form" (ngSubmit)="signUp(userSignUp.value)">
+    
+    <label for="inputEmail" 
+    class="form-label">Enter Name</label>
+    <input
+      required
+      minlength="5"
+      maxlength="30"
+      type="text"
+      class="form-input form-control"
+      name="name"
+      placeholder="Enter User Name"
+      ngModel
+      #name ="ngModel"
+    />
+    <p class="invalid-input">
+      <span *ngIf="name.invalid && name.touched " >
+        Please enter valid userName
+      </span>
+      <span *ngIf="name.errors?.['minlength']"> userName should be at least 3 digit lomg</span>
+      <span *ngIf="name.errors?.['maxlength']">userName should not more then 20 digit.</span>
+    </p>
+
+
+    <label for="inputEmail" 
+    class="form-label">Email</label>
+
+    <input
+      required
+      type="text"
+      class="form-input form-control"
+      name="email"
+      placeholder="Enter User Email"
+      ngModel
+      email
+      #email="ngModel"
+    />
+    <p class="invalid-input">
+      <span *ngIf="email.invalid && email.touched " >
+        Please enter valid useremail
+      </span>
+      <span *ngIf="email.errors?.['minlength']"> email should be at least 3 digit lomg</span>
+      <span *ngIf="email.errors?.['maxlength']"> email should not more then 20 digit.</span>
+    </p>
+
+   
+     <label for="Enterpassword" 
+    class="form-label">Password</label>
+    <input
+    required
+    minlength="8"
+    maxlength="20"
+    type="password"
+    class="form-input form-control"
+    name="password"
+    placeholder="Enter User Password"
+    ngModel
+    #password="ngModel"
+  />
+ 
+  <p class="invalid-input">
+    <span *ngIf="password.invalid && password.touched " >
+      Please enter valid Password
+    </span>
+    <span *ngIf="password.errors?.['minlength']"> Password should be at least 3 digit lomg</span>
+  <span *ngIf="password.errors?.['maxlength']">Password should not more then 20 digit.</span>
+  </p>
+
+  <button class="form-button btn btn-primary"
+  [disabled]="!userSignUp.valid">Sign Up</button>
+  <p>Already Have Account ? <a (click)="openLogin()" >Click Here</a></p>
+  </form>
+ </div>
+
+ <!-- this is for userlogin  -->
+
+ <div *ngIf="showLogin"  class="login">
+  <h1>User Login</h1>
+  <form 
+  #userLogin="ngForm" 
+  class="common-form" 
+  (ngSubmit)="login(userLogin.value)">
+  
+    <p class="error-p">{{authError}}</p>
+
+    <label for="inputEmail" 
+    class="form-label">Email</label>
+    <input
+      required
+      type="text"
+      class="form-input form-control"
+      name="email"
+      placeholder="Enter User Email"
+      ngModel
+      email
+      #email="ngModel"
+     
+    />
+    <p class="invalid-input">
+      <span *ngIf="email.invalid && email.touched " >
+        Please enter valid input
+      </span>
+      <span *ngIf="email.errors?.['minlength']"> Email should be at least 3 digit lomg</span>
+    <span *ngIf="email.errors?.['maxlength']">Email should not more then 20 digit.</span>
+    </p>
+
+    <label for="inputPassword5" 
+    class="form-label">Password</label>
+    <input
+    required
+    minlength="3"
+    maxlength="20"
+    type="password"
+    class="form-input form-control"
+    name="password"
+    placeholder="Enter User Password"
+    ngModel
+    
+    #password="ngModel"
+    
+  />
+  <p class="invalid-input">
+    <span *ngIf="password.invalid && password.touched ">
+      Please enter valid input
+    </span>
+    <span *ngIf="password.errors?.['minlength']"> password should be at least 3 digit lomg</span>
+    <span *ngIf="password.errors?.['maxlength']">passwoed should not more then 20 digit.</span>
+  </p>
+
+
+  <button [disabled]="userLogin.invalid" class="form-button btn btn-primary">Login</button>
+  <a >Forget Password</a>
+  <p>Want to Create Account ? <a (click)="openSignUp()" >Click Here</a></p>
+  </form>
+ </div>
+</div>
